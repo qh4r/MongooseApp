@@ -10,6 +10,11 @@ var swig = require('swig');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+//mongoose
+var mongoose =require('mongoose');
+
+mongoose.connect('mongodb://qh4r:ewqasdcxz@ds041494.mongolab.com:41494/mongoose_test')
+
 var app = express();
 
 //asign swig engine
