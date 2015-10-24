@@ -10,19 +10,21 @@ var standupSchema = new Schema({
     createdOn: {type: Date, default: Date.now}
 });
 
-//schema without id
+////schema without id
+//
+//var noIdSchema = new Schema({
+//    name: String
+//}, {
+//    _id: false
+//});
+//
+////schema using add
+//
+//var emptySchema = new Shema();
+//
+//emptySchema.add({
+//    name: String,
+//    age: Number
+//});
 
-var noIdSchema = new Schema({
-    name: String
-}, {
-    _id: false
-});
-
-//schema using add
-
-var emptySchema = new Shema();
-
-emptySchema.add({
-    name: String,
-    age: Number
-});
+module.exports = mongoose.model('Standup', standupSchema);
