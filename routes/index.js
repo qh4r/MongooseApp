@@ -3,16 +3,12 @@ var router = express.Router();
 var standupCtrl = require('../controllers/standup.server.controller');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.route('/')
+    .get(standupCtrl.list)
+    .post(standupCtrl.filterByMember);
 
 router.route('/newnote')
-    .get(function(req, res){
-      return standupCtrl.getNote(req, res);
-    })
-    .post(function(req, res){
-      return standupCtrl.create(req, res);
-});
+    .get(standupCtrl.getNote)
+    .post(standupCtrl.create);
 
 module.exports = router;
