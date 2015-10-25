@@ -36,9 +36,18 @@ exports.create = function (req, res) {
         impediment: req.body.impediment
     });
 
-    entry.save();
+    //entry.schema.path('memberName').validate(function(value){
+    //   return value !== 'None';
+    //}, 'Please select member');
 
-    res.redirect(301, '/');
+    entry.save(function(err){
+        if(err) {
+            var message = 'There was a problem: ' + err;
+            res.render('newnote', {title: 'Standup - New note', message: message})
+        } else {
+            res.redirect(301, '/');
+        }
+    });
 };
 
 exports.getNote = function (req, res) {
